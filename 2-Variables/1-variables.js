@@ -16,3 +16,9 @@ console.log("4:", number2);
 console.log("5:", typeof number2);
 console.log("6:", typeof number);
 
+var tieneCuenta = true;
+console.log("7:", "¿Este usuario tiene una cuenta?", tieneCuenta  );
+console.log("8:", typeof tieneCuenta);
+
+tieneCuenta = false;
+console.log("8:", typeof tieneCuenta);
