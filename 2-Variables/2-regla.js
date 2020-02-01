@@ -26,3 +26,8 @@ console.log("4:", "usar camel case", estoEsUnaVariable);
 ejemplo*/
 var precioManzana = 10;
 console.log("5:", "El precio de una manzana es de $",precioManzana);
+
+/*se comienza con minuscula
+ya que las clases en JavaScript se inician con mayusculas*/
+var precioNaranja = 26;
+console.log("6:", "El precio de una naranja es de: $",precioNaranja);
