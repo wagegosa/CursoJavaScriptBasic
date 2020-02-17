@@ -15,11 +15,11 @@ var persona = {
   apellido: "White"
 };
 console.log("7.0: Muestra el nombre y apellido: ", persona);
+
 delete persona.apellido;
 console.log("7.1: Eliminamos el apellido: ", persona);
 
 var heroes = ["Green Arrow", "Batman", "Flash"];
-
 console.log("8: Debe mostrar los nombre de unos superheroes", heroes);
 
 delete heroes[1];
