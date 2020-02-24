@@ -23,9 +23,9 @@ if (horaTrabajo) {
 }
 
 // numeros
-a=10;
+a=11;
 b =2
-if (a % b = 0) {
+if (a % b == 0) {
   console.log("4: Es par");
 } else {
   console.log("4: Es impar");
@@ -40,14 +40,15 @@ if ("hola") {
 
 // objetos
 if (null) {
-  console.log("5: es un objeto");
+  console.log("6: es un objeto");
 } else {
-  console.log("5: es un null");
+  console.log("6: es un null");
 }
 
 // undefined
+//if (false) {
 if (true) {
-  console.log("6: no es un undefined");
+  console.log("6: no esta indefinida");
 } else {
-  console.log("6: es un undefined");
+  console.log("6: Si esta indefinida");
 }
