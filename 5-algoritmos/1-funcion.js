@@ -16,21 +16,21 @@ if (saludarHumano) {
 function suma(a, b) {
   console.log("El resultado de la suma:", a + b);
 }
-  suma(3, 6);
-  suma(6, 9);
+suma(3, 6);
+suma(6, 9);
 // para este caso, tenemos una suma quemada, eso nos idica que solo podemos cambiar la suma solo si solo cambiamos los nuemro a sumar 
-  function suma2() {
-    console.log("El resultado de la suma: ", 10 + 10);
-  }
+function suma2() {
+  console.log("El resultado de la suma: ", 10 + 10);
+}
 //llmamos a la función suma2
-  suma2();
-  
-  function sumaConResultado(numero1, numero2) {
+suma2();
+
+function sumaConResultado(numero1, numero2) {
      return numero1 + numero2;//retonamos para que se imprir por fuera de la función
-  }
+   }
   //el resultado de la función la guardamos en la variable "reultado"
-   var resultado = sumaConResultado(4, 4);
-   console.log("resuldado: ", resultado);
+  var resultado = sumaConResultado(4, 4);
+  console.log("resuldado: ", resultado);
   //creamos el arreglo
   var productos = [
   { nombre: "PS4", precio: 250 },
