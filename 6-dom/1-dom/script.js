@@ -11,7 +11,10 @@ prueba.innerHTML = "!Saludos¡";
 prueba.style.color = "green";
 
 var subtitulos = document.getElementsByClassName("subtitulo");
-console.log(subtitulos[1]);
+console.log("Motramos el subtitulo 1: ",subtitulos[1]);
+console.log("Motramos el subtitulo 2: ",subtitulos[2]);
 
 var etiquetasH2 = document.getElementsByTagName("h2");
-console.log(etiquetasH2);
+
+//console.log(etiquetasH2);
+console.log("vemos los objetos de h2: ", etiquetasH2);
