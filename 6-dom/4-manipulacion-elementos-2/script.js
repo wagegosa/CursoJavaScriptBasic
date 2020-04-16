@@ -40,6 +40,7 @@ lista.insertBefore(elemento8, elemento5);
 
 // 2: borrar contenido del elemento
 // lista.innerHTML = "";
+subLista.innerHTML = "";
 
 // 3: remover elementos hijos
 // lista.removeChild(elemento5);
