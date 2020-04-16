@@ -43,11 +43,12 @@ lista.insertBefore(elemento8, elemento5);
 subLista.innerHTML = "";
 
 // 3: remover elementos hijos
-// lista.removeChild(elemento5);
+// borramos el elemento 5
+lista.removeChild(elemento5);
 
 // 4: reemplazar elementos hijos
-// lista.replaceChild(elemento5, elemento4);
+lista.replaceChild(elemento5, elemento4);
 
 // 5: clonar elementos
-// var lista2 = lista.cloneNode(true);
-// console.log(lista2);
+var lista2 = lista.cloneNode(true);
+console.log(lista2);
