@@ -1,0 +1,28 @@
+/*id del div que esta ene el html*/
+#boton{
+  display: inline-block;
+  background: green;
+  color: white;
+  padding: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  cursor: pointer;
+  user-select: none;
+}
+/*div creado por el script*/
+.botonHijo{
+  width: fit-content;
+  background: blue;
+  color: white;
+  padding: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  cursor: pointer;
+  user-select: none; 
+  /*margin-top: 16px;
+  margin-bottom: 16px;*/
+  /*con este margien realizamos los 2 anteriores*/
+  margin: 16px 0;
+}
