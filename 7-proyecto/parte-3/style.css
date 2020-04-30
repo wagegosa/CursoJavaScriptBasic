@@ -3,6 +3,10 @@ body{
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
 }
+/*llamamos la clase inline*/
+.inline{
+  display: inline-block;
+}
 /*llamamos la clase card*/
 .card{
   width: 320px;
