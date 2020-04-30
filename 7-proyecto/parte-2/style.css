@@ -1,0 +1,97 @@
+/*llamamos a body*/
+body{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+/*llamamos la clase card*/
+.card{
+  width: 320px;
+  background: #f6f7fb;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23),0 3px 6px rgba(0,0,0,016);
+  border-radius: 8px;
+  margin: 16px;
+  padding-bottom: 16px;
+}
+/*llamamos a h2*/
+h2{
+  padding: 16px 0 16px 16px;
+  margin: 0;
+  color: #505050;
+  font-size: 24px;
+}
+/*llamamos la clase */
+.item-cover{
+  border-radius: 8px 8px 0 0;
+}
+/*llamamos la clase fila*/
+.fila{
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+/*llamamos la clase fila-final*/
+.fila-final{
+  margin-left: 16px;
+}
+/*llamamos la clase subtitulo*/
+.subtitulo{
+  display: inline-block;
+  color: #a2a3a5;
+  font-size: 18px;
+}
+/*llamamos la clase precio*/
+.precio{
+  display: inline-block;
+  color: #6c9d48;
+  font-size: 24px;
+  margin-left: 16px;
+}
+/*llamamos la clase contador*/
+.contador{
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background: white;
+  border-radius: 30px;
+  margin-left: 16px;
+  position: relative;
+}
+/*llamamos la clase boton-menos*/
+.boton-menos {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  cursor: pointer;
+}
+/*llamamos la clase boton-mas*/
+.boton-mas {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+}
+/*llamamos la clase cantidad*/
+.cantidad{
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  color: #a2a3a5;
+  font-size: 18px;
+  line-height: 40px;
+}
+/*llamamos la clase agregar*/
+.boton-agregar{
+  height: 48px;
+  margin: 16px 16px 0 16px;
+  background: #6686d9;
+  text-align: center;
+  color: white;
+  line-height: 48px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+/*llamamos la clase división*/
+.division{
+  height: 2px;
+  background: #bfbfbf;
+  margin-bottom: 16px;
+}
