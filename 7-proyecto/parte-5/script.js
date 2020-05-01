@@ -3,14 +3,28 @@
 var etiquetaSubtotal = document.getElementById("etiqueta-subtotal");
 var etiquetaTotal = document.getElementById("etiqueta-total");
 var contenedorEtiquetas = document.getElementById("contenedor-etiquetas");
+var etiquetaEnvio = document.getElementById("etiqueta-envio");
+var etiquetaDescuento = document.getElementById("etiqueta-descuento");
 
-// constantes
+/**
+ * Condiciones:
+ * Envio Gratis: El envío saldra gratis con compras > a $100.
+ * Descuento 10%: El descuento aplica cuando las compras son >= a $500 y de ambos productos.
+ */
+// Variables
 var precioSubtotal = 0;
-var costoEnvio = 5;
 var referenciaElemento = null;
+// envio
 var cantidadAcumulada = 0;
 var referenciaElemento2 = null;
 var cantidadAcumulada2 = 0;
+// descuento
+var agregadoArticulo1 = false;
+var agregadoArticulo2 = false;
+var descuento = 0;
+// variables capturadas del index
+var valorEnvio = document.getElementById("valor-envío");
+var valorDescuento = document.getElementById("valor-descuento");
 
 // ----------------------Articulos 1
 // capturamos los id de los botonoes del articulo 1
@@ -38,10 +52,10 @@ function disminuir(){
   }
 }
 function agregar(){
-  // console.log(Number(precio1.innerHTML) * Number(cantidad.innerHTML));
+  agregadoArticulo1 = true;
   precioSubtotal += Number(precio1.innerHTML) * Number(cantidad.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
-  etiquetaTotal.innerHTML = precioSubtotal + costoEnvio;
+  aplicarDescuentos();
   agregarEtiquetaArticulo();
 }
 function agregarEtiquetaArticulo() {
@@ -57,6 +71,21 @@ function agregarEtiquetaArticulo() {
   }else
     contenedorEtiquetas.appendChild(fila);
   referenciaElemento = fila;
+}
+
+
+
+function aplicarDescuentos() {
+  if(precioSubtotal > 100){
+    etiquetaEnvio.style.color = "#4382FF";
+    valorEnvio.innerHTML = 0;
+  }
+  if (agregadoArticulo1 && agregadoArticulo2 && precioSubtotal >= 500) {
+    etiquetaDescuento.style.color = "4382FF";
+    descuento = precioSubtotal  * 0.1;
+    valorDescuento.innerHTML = descuento;
+  }
+  etiquetaTotal.innerHTML = precioSubtotal + Number(valorEnvio.innerHTML) - descuento;
 }
 // ----------------------Articulos 2
 // capturamos los id de los botonoes del articulo 2
@@ -85,9 +114,10 @@ function disminuir2(){
 }
 }
 function agregar2(){
+  agregadoArticulo2 = true;
   precioSubtotal += Number(precio2.innerHTML) * Number(cantidad2.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
-  etiquetaTotal.innerHTML = precioSubtotal + costoEnvio;
+  aplicarDescuentos();
   agregarEtiquetaArticulo2();
 }
 function agregarEtiquetaArticulo2() {
