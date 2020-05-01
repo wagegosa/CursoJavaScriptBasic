@@ -2,10 +2,15 @@
 // etiquetas 
 var etiquetaSubtotal = document.getElementById("etiqueta-subtotal");
 var etiquetaTotal = document.getElementById("etiqueta-total");
+var contenedorEtiquetas = document.getElementById("contenedor-etiquetas");
 
 // constantes
 var precioSubtotal = 0;
 var costoEnvio = 5;
+var referenciaElemento = null;
+var cantidadAcumulada = 0;
+var referenciaElemento2 = null;
+var cantidadAcumulada2 = 0;
 
 // ----------------------Articulos 1
 // capturamos los id de los botonoes del articulo 1
@@ -37,8 +42,22 @@ function agregar(){
   precioSubtotal += Number(precio1.innerHTML) * Number(cantidad.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
   etiquetaTotal.innerHTML = precioSubtotal + costoEnvio;
+  agregarEtiquetaArticulo();
 }
-
+function agregarEtiquetaArticulo() {
+  var fila = document.createElement("div");
+  fila.classList.add("fila");
+  var texto = document.createElement("span");
+  texto.classList.add("subtitulo");
+  cantidadAcumulada += Number(cantidad.innerHTML);
+  texto.innerHTML = "Gato HotDog X " + cantidadAcumulada;
+  fila.appendChild(texto);
+  if(referenciaElemento != null){
+    contenedorEtiquetas.replaceChild(fila, referenciaElemento);
+  }else
+    contenedorEtiquetas.appendChild(fila);
+  referenciaElemento = fila;
+}
 // ----------------------Articulos 2
 // capturamos los id de los botonoes del articulo 2
 var botonMas2 = document.getElementById("mas2");
@@ -48,7 +67,6 @@ var botonAgregar2 = document.getElementById("agregar2");
 // obtenemos las etiquetas articulo 2
 var cantidad2 = document.getElementById("cantidad2");
 var precio2 = document.getElementById("precio2");
-
 
 // Enlazamos los eventos
 botonMas2.addEventListener("click", incrementar2);
@@ -70,4 +88,19 @@ function agregar2(){
   precioSubtotal += Number(precio2.innerHTML) * Number(cantidad2.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
   etiquetaTotal.innerHTML = precioSubtotal + costoEnvio;
+  agregarEtiquetaArticulo2();
+}
+function agregarEtiquetaArticulo2() {
+  var fila = document.createElement("div");
+  fila.classList.add("fila");
+  var texto = document.createElement("span");
+  texto.classList.add("subtitulo");
+  cantidadAcumulada2 += Number(cantidad2.innerHTML);
+  texto.innerHTML = "Cat Burger X " + cantidadAcumulada2;
+  fila.appendChild(texto);
+  if(referenciaElemento2 != null){
+    contenedorEtiquetas.replaceChild(fila, referenciaElemento2);
+  }else
+    contenedorEtiquetas.appendChild(fila);
+  referenciaElemento2 = fila;
 }
