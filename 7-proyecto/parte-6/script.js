@@ -1,4 +1,25 @@
 // ----------------------Globales
+// ----------------------Articulos
+var articulos = [
+  // HotCat
+  {
+    id = "articulo-001",
+    nombre = "Gato HotDog",
+    precio = 50,
+    cover = "gato-hot-dog.png"
+  }
+  // Cat Burger
+  {
+    id = "articulo-002",
+    nombre = "Cat Burger",
+    precio = 40,
+    cover = "gato-hamburguesa.png"  
+  }
+];
+
+function crearElemento(tipo, contenido, clase, archivoImagen) {
+  var elemento = document.createElement)
+}
 // etiquetas 
 var etiquetaSubtotal = document.getElementById("etiqueta-subtotal");
 var etiquetaTotal = document.getElementById("etiqueta-total");
@@ -44,14 +65,14 @@ botonAgregar.addEventListener("click", agregar);
 // ----------------------Funnciones
 // creamos las function
 function incrementar() {
- cantidad.innerHTML++;
+  cantidad.innerHTML++;
 }
-function disminuir(){
+function disminuir() {
   if (cantidad.innerHTML > 1) {
     cantidad.innerHTML--;
   }
 }
-function agregar(){
+function agregar() {
   agregadoArticulo1 = true;
   precioSubtotal += Number(precio1.innerHTML) * Number(cantidad.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
@@ -66,9 +87,9 @@ function agregarEtiquetaArticulo() {
   cantidadAcumulada += Number(cantidad.innerHTML);
   texto.innerHTML = "Gato HotDog X " + cantidadAcumulada;
   fila.appendChild(texto);
-  if(referenciaElemento != null){
+  if (referenciaElemento != null) {
     contenedorEtiquetas.replaceChild(fila, referenciaElemento);
-  }else
+  } else
     contenedorEtiquetas.appendChild(fila);
   referenciaElemento = fila;
 }
@@ -76,13 +97,13 @@ function agregarEtiquetaArticulo() {
 
 
 function aplicarDescuentos() {
-  if(precioSubtotal > 100){
+  if (precioSubtotal > 100) {
     etiquetaEnvio.style.color = "#4382FF";
     valorEnvio.innerHTML = 0;
   }
   if (agregadoArticulo1 && agregadoArticulo2 && precioSubtotal >= 500) {
     etiquetaDescuento.style.color = "4382FF";
-    descuento = precioSubtotal  * 0.1;
+    descuento = precioSubtotal * 0.1;
     valorDescuento.innerHTML = descuento;
   }
   etiquetaTotal.innerHTML = precioSubtotal + Number(valorEnvio.innerHTML) - descuento;
@@ -105,15 +126,15 @@ botonAgregar2.addEventListener("click", agregar2);
 // ----------------------Funnciones
 // creamos las function
 function incrementar2() {
-   cantidad2.innerHTML++;
-   // console.log(Number(cantidad2.innerHTML));
+  cantidad2.innerHTML++;
+  // console.log(Number(cantidad2.innerHTML));
 }
-function disminuir2(){
+function disminuir2() {
   if (cantidad2.innerHTML > 1) {
     cantidad2.innerHTML--;
+  }
 }
-}
-function agregar2(){
+function agregar2() {
   agregadoArticulo2 = true;
   precioSubtotal += Number(precio2.innerHTML) * Number(cantidad2.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
@@ -128,9 +149,9 @@ function agregarEtiquetaArticulo2() {
   cantidadAcumulada2 += Number(cantidad2.innerHTML);
   texto.innerHTML = "Cat Burger X " + cantidadAcumulada2;
   fila.appendChild(texto);
-  if(referenciaElemento2 != null){
+  if (referenciaElemento2 != null) {
     contenedorEtiquetas.replaceChild(fila, referenciaElemento2);
-  }else
+  } else
     contenedorEtiquetas.appendChild(fila);
   referenciaElemento2 = fila;
 }
