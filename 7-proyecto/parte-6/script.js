@@ -1,25 +1,73 @@
 // ----------------------Globales
 // ----------------------Articulos
 var articulos = [
+  {
   // HotCat
+    id: "articulo-001",
+    nombre: "gato hot dog",
+    precio: 50,
+    cover: "gato-hot-dog.png"
+  },
   {
-    id = "articulo-001",
-    nombre = "Gato HotDog",
-    precio = 50,
-    cover = "gato-hot-dog.png"
-  }
   // Cat Burger
-  {
-    id = "articulo-002",
-    nombre = "Cat Burger",
-    precio = 40,
-    cover = "gato-hamburguesa.png"  
+    id: "articulo-001",
+    nombre : "Cat Burger",
+    precio : 40,
+    cover : "gato-hamburguesa.png"  
   }
 ];
-//prueba
-function crearElemento(tipo, contenido, clase, archivoImagen) {
-  var elemento = document.createElement)
+//llamamos la función dibujarArticulo esta contiene el arreglo articulos en pa posición cero
+for (let i = 0; i < articulos.length; i++) {
+  dibujarArticulo(articulos[i]);
 }
+// función para crear los elementos necesarios pasandole unas variables especificas.
+function crearElemento(tipo, contenido, clase, archivoImagen) {
+  // creamos elemento y llamamos la variables tipo para saber si es div, img u otro
+  var elemento = document.createElement(tipo);
+  if (contenido != null) {
+    // insertamos el conteido 
+    elemento.innerHTML = contenido;
+  }
+  if (clase != null) {
+    elemento.classList.add(clase);
+  }
+  if (archivoImagen != null) {
+    elemento.setAttribute("src", "assets/" + archivoImagen);
+  }
+  // retornamos la variable elemento 
+  return elemento;
+}
+function dibujarArticulo(articulo) {
+  // creamos el vid donde va estar todo lo relacionado con el producto.
+  var itemCard = crearElemento("div", null,"item-card", null);
+  // creamos el imge y por medio de la variable arctivo llamamos laa propiedad cover donde se encuentra el combre de la ImageBitmapRenderingContext.
+  itemCard.appendChild(crearElemento("img", null, "item-cover", articulo.cover));
+  // Agregamos el titulo
+  itemCard.appendChild(crearElemento("h2", articulo.nombre, null, null));
+  // creamos el div para la clase fila
+  var filaPrecio = crearElemento("div", null, "fila", null);
+  filaPrecio.appendChild(crearElemento("span", "precio", "subtitulo", null));
+  filaPrecio.appendChild(crearElemento("span", "$", "precio", null));
+  filaPrecio.appendChild(crearElemento("span", articulo.precio, "precio", null));
+  itemCard.appendChild(filaPrecio);
+  //Creamos el contador
+  var filaContador = crearElemento("div", null, "fila", null);
+  filaContador.appendChild(crearElemento("span", "cantidad", "subtitulo", null));
+  //creamos  para las imagens del contador
+  var contador = crearElemento("div", null, "contador", null);
+  contador.appendChild(crearElemento("img", null, "boton-menos", "menos.svg"));
+  contador.appendChild(crearElemento("span", 1, "cantidad", null));
+  contador.appendChild(crearElemento("img", null, "boton-mas", "mas.svg"));
+  filaPrecio.appendChild(contador);
+  //agregamos todo lo anterior al id principal
+  itemCard.appendChild(contador);
+  //botón de agregar
+  itemCard.appendChild(crearElemento("div", "Agregar", "boton-agregar", null))
+  // creamos una variable donde capturamos el id  del vid donde se va pintar todo lo anterior hecho en la variable itemCard
+  var contenedorArticulos = document.getElementById("contenedor-articulos");
+  contenedorArticulos.appendChild(itemCard);
+}
+
 // etiquetas 
 var etiquetaSubtotal = document.getElementById("etiqueta-subtotal");
 var etiquetaTotal = document.getElementById("etiqueta-total");
