@@ -16,7 +16,7 @@ var articulos = [
     cover = "gato-hamburguesa.png"  
   }
 ];
-
+//prueba
 function crearElemento(tipo, contenido, clase, archivoImagen) {
   var elemento = document.createElement)
 }
