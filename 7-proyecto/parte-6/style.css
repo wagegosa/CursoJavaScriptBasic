@@ -4,11 +4,20 @@ body{
   text-transform: uppercase;
 }
 /*llamamos la clase inline*/
-.inline{
+/*.inline{
   display: inline-block;
-}
+}*/
 /*llamamos la clase card*/
-.card{
+.item-card{
+  display: inline-block;
+  width: 320px;
+  background: #f6f7fb;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23),0 3px 6px rgba(0,0,0,016);
+  border-radius: 8px;
+  margin: 16px;
+  padding-bottom: 16px;
+}
+.total-card{
   width: 320px;
   background: #f6f7fb;
   box-shadow: 0 3px 6px rgba(0,0,0,0.23),0 3px 6px rgba(0,0,0,016);
