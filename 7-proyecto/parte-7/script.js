@@ -10,10 +10,17 @@ var articulos = [
   },
   {
   // Cat Burger
-    id: "articulo-001",
+    id: "articulo-002",
     nombre : "Cat Burger",
     precio : 40,
     cover : "gato-hamburguesa.png"  
+  },
+  {
+  // Cat taco
+    id: "articulo-003",
+    nombre : "Cat Taco",
+    precio : 45,
+    cover : "cat-taco.jpg"  
   }
 ];
 //llamamos la función dibujarArticulo esta contiene el arreglo articulos en pa posición cero
@@ -68,7 +75,10 @@ function dibujarArticulo(articulo) {
   //agregamos todo lo anterior al id principal
   itemCard.appendChild(contador);
   //botón de agregar
-  itemCard.appendChild(crearElemento("div", "Agregar", "boton-agregar", null))
+  var botonAgregar = crearElemento("div", "Agregar", "boton-agregar", null);
+  botonAgregar.addEventListener("click", agregar.bind(null, articulo, numeroContador));
+  itemCard.appendChild(botonAgregar);
+
   // creamos una variable donde capturamos el id  del vid donde se va pintar todo lo anterior hecho en la variable itemCard
   var contenedorArticulos = document.getElementById("contenedor-articulos");
   contenedorArticulos.appendChild(itemCard);
@@ -91,30 +101,11 @@ var precioSubtotal = 0;
 var referenciaElemento = null;
 // envio
 var cantidadAcumulada = 0;
-var referenciaElemento2 = null;
-var cantidadAcumulada2 = 0;
 // descuento
-var agregadoArticulo1 = false;
-var agregadoArticulo2 = false;
 var descuento = 0;
 // variables capturadas del index
 var valorEnvio = document.getElementById("valor-envío");
 var valorDescuento = document.getElementById("valor-descuento");
-
-// ----------------------Articulos 1
-// capturamos los id de los botonoes del articulo 1
-var botonMas = document.getElementById("mas");
-var botonMenos = document.getElementById("menos");
-var botonAgregar = document.getElementById("agregar");
-
-// obtenemos las etiquetas articulo 1
-var cantidad = document.getElementById("cantidad");
-var precio1 = document.getElementById("precio1");
-
-// Enlazamos los eventos
-botonMas.addEventListener("click", incrementar);
-botonMenos.addEventListener("click", disminuir);
-botonAgregar.addEventListener("click", agregar);
 
 // ----------------------Funnciones
 // creamos las function
@@ -126,39 +117,52 @@ function disminuir(referenciaContador) {
     referenciaContador.innerHTML--;
   }
 }
-function agregar() {
-  agregadoArticulo1 = true;
-  precioSubtotal += Number(precio1.innerHTML) * Number(cantidad.innerHTML);
+function agregar(articulos, referenciaContador) {
+  //marca cuando este tipo de articulo ya fue agregado
+  articulos.agregar = true;
+  precioSubtotal += Number(articulos.precio) * Number(referenciaContador.innerHTML);
   etiquetaSubtotal.innerHTML = precioSubtotal;
-  aplicarDescuentos();
-  agregarEtiquetaArticulo();
-}
-function agregarEtiquetaArticulo() {
-  var fila = document.createElement("div");
-  fila.classList.add("fila");
-  var texto = document.createElement("span");
-  texto.classList.add("subtitulo");
-  cantidadAcumulada += Number(cantidad.innerHTML);
-  texto.innerHTML = "Gato HotDog X " + cantidadAcumulada;
-  fila.appendChild(texto);
-  if (referenciaElemento != null) {
-    contenedorEtiquetas.replaceChild(fila, referenciaElemento);
-  } else
-    contenedorEtiquetas.appendChild(fila);
-  referenciaElemento = fila;
-}
-
-
-
-function aplicarDescuentos() {
   if (precioSubtotal > 100) {
     etiquetaEnvio.style.color = "#4382FF";
     valorEnvio.innerHTML = 0;
   }
-  if (agregadoArticulo1 && agregadoArticulo2 && precioSubtotal >= 500) {
+  agregarEtiquetaArticulo(articulos, referenciaContador);
+  var aplicarDescuento = corroborarDescuento();
+
+  if(aplicarDescuento && precioSubtotal > 500){
     etiquetaDescuento.style.color = "4382FF";
     descuento = precioSubtotal * 0.1;
     valorDescuento.innerHTML = descuento;
   }
   etiquetaTotal.innerHTML = precioSubtotal + Number(valorEnvio.innerHTML) - descuento;
+  referenciaContador.innerHTML = 1;
+}
+function agregarEtiquetaArticulo(articulos, referenciaContador) {
+  var fila = crearElemento("div", null, "fila", null);
+  if(articulos.cantidadAcumulada == null){
+    articulos.cantidadAcumulada = Number(referenciaContador.innerHTML);
+  }else{
+    articulos.cantidadAcumulada += Number(referenciaContador.innerHTML);
+  }
+  var texto = crearElemento("span", articulos.nombre + " * " + articulos.cantidadAcumulada, "subtitulo", null);
+  fila.appendChild(texto);
+  if (articulos.referenciaArticulo == null) {
+    contenedorEtiquetas.appendChild(fila);
+  } else {
+    contenedorEtiquetas.replaceChild(fila, articulos.referenciaArticulo);
+  }
+  articulos.referenciaArticulo = fila;
+
+}
+function corroborarDescuento(){
+  var cantidadTipoArticulos = 0;
+  for (let i = 0; i < articulos.length; i++) {
+    if(articulos[i].agregar)
+      cantidadTipoArticulos ++;
+  }
+  if (cantidadTipoArticulos >= 2) {
+    return true;
+  }else{
+    return false;
+  }
 }
